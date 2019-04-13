@@ -7,3 +7,21 @@
 .movie-button {
 
 }
+
+
+.movie-border {
+    width: 150px;
+    heigth: 150px;
+    border: 5px solid black;
+    padding: 5px;
+    margin: 5px;
+}
+
+.movie-image {
+    width: 150px;
+    height: 150px;
+}
+
+.movie-rating {
+    color: black;
+}
