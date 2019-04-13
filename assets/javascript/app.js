@@ -6,6 +6,8 @@ $(document).ready(function() {
     var queryURL = "";
     var movieToBeSearched = "";
     var queryString = "";
+    var imageCount = 2;
+    var imageUrl = "";
 
     // build the array for the buttons
 
@@ -36,15 +38,33 @@ $(document).ready(function() {
     }
 
     function getImages(queryURL) {
+
+        console.log(queryURL);
+
         $.ajax({
             url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            // createRow(response);
-            // console.log(response);
-            console.log("Here I Am");
-        });
-    };
+            method: "GET",
+            contentType: "application/json",
+            dataType : "json",
+
+        })
+
+            .then(function (response) {
+
+                imageUrl = response.data;
+
+                console.log(imageUrl);
+
+                for (var i = 0; imageUrl.length > i; i++) {
+                    var movieURL = imageUrl[i].images.original.url;
+                    console.log("My movie = " + movieURL);
+                    var movieImage = $("<img>");
+                    movieImage.attr("src", movieURL);
+                    movieImage.attr("alt", "movie-" + [i]);
+                    $("#image").append(movieImage);
+            }
+            });
+         };
 
 
 
@@ -69,7 +89,7 @@ $(document).ready(function() {
         {
             if (topics.buttonNumber[i] === movieYearToSearch)
             {
-                queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics.movieQuery[i] + "&apikey=dc6zaTOxFJmzC";
+                queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics.movieQuery[i] + "&apikey=dc6zaTOxFJmzC"+ "&limit=10";
             }
         }
 
