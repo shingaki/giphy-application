@@ -20,6 +20,13 @@ $(document).ready(function() {
         };
 
 
+    var imagesForChosenTopic =
+        {
+            imagesStill: [],
+            imagesAnimated: [],
+            still: []
+        }
+
 
 
     // dynamically build the buttons
@@ -35,7 +42,6 @@ $(document).ready(function() {
 
     // build the images
     function getImages(queryURL) {
-        console.log(queryURL);
 
         $.ajax({
             url: queryURL,
@@ -47,24 +53,101 @@ $(document).ready(function() {
 
             .then(function (response) {
                 imageUrl = response.data;
-                console.log(imageUrl);
                 for (var i = 0; imageUrl.length > i; i++) {
-                    var movieURL = imageUrl[i].images.original.url;
-                    console.log("My movie = " + movieURL);
+                    var movieURLStill = imageUrl[i].images.fixed_height_still.url;
+                    var movieURLAnimated = imageUrl[i].images.fixed_height.url;
+                    var movieURL = imageUrl[i].images.fixed_height_still.url;
+
                     var movieImage = $("<img>");
                     movieImage.addClass("movie-border movie-image");
                     movieImage.attr("src", movieURL);
                     movieImage.attr("alt", "movie-" + [i]);
+                    movieImage.attr("id", "movie-" + [i]);
                     var movieRating = imageUrl[i].rating;
                     var movieRatingDisplay = $("<div>");
                     movieRatingDisplay.addClass("movie-rating");
                     movieRatingDisplay.text("Rating: " + movieRating.toUpperCase());
-
-                    $("#image").prepend(movieImage);
-                    $("#image").prepend(movieRatingDisplay);
-            }
+                    $("#image").append(movieImage);
+                    $("#image").append(movieRatingDisplay);
+                    imagesForChosenTopic.imagesStill.push(movieURLStill);
+                    imagesForChosenTopic.imagesAnimated.push(movieURLAnimated);
+                    imagesForChosenTopic.still.push(true);
+                    // addImageClickEvent(i);
+                }
             });
-         };
+    };
+
+    // function addImageClickEvent(x) {
+    //         $("#movie-"+[x]).on("click", function () {
+    //             // swapImage();
+    //             console.log("Added CLick to Image");
+    //             console.log([x]);
+    //             swapImage(x);
+    //         });
+    // }
+
+
+        $("#image").on("click", ".movie-image", function () {
+            console.log("Added CLick to Image");
+            var movieID = $(this).attr("id");
+                console.log(movieID);
+                if (movieID.length === 7) {
+                    var x = movieID.substr(6, 1);
+                }
+                else {
+                    var x = movieID.substr(6, 2);
+                }
+            swapImage(x);
+            console.log(x);
+
+
+        });
+
+
+
+
+    function swapImage(x) {
+
+        console.log("movie Row");
+        if (imagesForChosenTopic.still[x]) {
+            console.log("image was clicked and is a still");
+            var movieURL = imagesForChosenTopic.imagesAnimated[x];
+
+            var movieImage = $("<img>");
+            movieImage.addClass("movie-border movie-image");
+            movieImage.attr("src", movieURL);
+            movieImage.attr("alt", "movie-" + [x]);
+            movieImage.attr("id", "movie-" + [x]);
+
+            imagesForChosenTopic.still[x] = false;
+
+            $("#movie-" + [x]).replaceWith(movieImage);
+        } else {
+            console.log("clicked again - is animated");
+            var movieURL = imagesForChosenTopic.imagesStill[x];
+
+            var movieImage = $("<img>");
+            movieImage.addClass("movie-border movie-image");
+            movieImage.attr("src", movieURL);
+            movieImage.attr("alt", "movie-" + [x]);
+            movieImage.attr("id", "movie-" + [x]);
+
+            imagesForChosenTopic.still[x] = false;
+            $("#movie-" + [x]).replaceWith(movieImage);
+        }
+    }
+
+
+    function buildSearchURL(movieYearToSearch) {
+        for (var i = 0; topics.movieYear.length > i; i++)
+        {
+            if (topics.buttonNumber[i] === movieYearToSearch)
+            {
+                queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics.movieQuery[i] + "&apikey=dc6zaTOxFJmzC"+ "&limit=10";
+            }
+        }
+        return queryURL;
+    }
 
     function addClickEvent() {
         for (var j = 0; topics.buttonNumber.length > j; j++) {
@@ -80,16 +163,10 @@ $(document).ready(function() {
         }
     }
 
-    function buildSearchURL(movieYearToSearch) {
-        for (var i = 0; topics.movieYear.length > i; i++)
-        {
-            if (topics.buttonNumber[i] === movieYearToSearch)
-            {
-                queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics.movieQuery[i] + "&apikey=dc6zaTOxFJmzC"+ "&limit=10";
-            }
-        }
-        return queryURL;
-    }
+
+
+
+
 
 
     // execution of the code
@@ -99,4 +176,29 @@ $(document).ready(function() {
 
 
 
+
 } )
+
+
+// /***************************************************************************
+//  // Event handler for user clicking a food image
+//  //***************************************************************************
+//  $(document.body).on("click", "img", function() {
+//
+//    if (DebugON) console.log ("In image press event handler");
+//
+//    // Swap the source url with the alternate src url
+//    var temp_src = $(this).attr("src");
+//    $(this).attr("src", $(this).attr("src_swap"));
+//    $(this).attr("src_swap", temp_src);
+//
+//    if (DebugON) console.log ("In image press temp: " + temp_src);
+//    if (DebugON) console.log ("In image press src: " + $(this).attr("src"));
+//    if (DebugON) console.log ("In image press: swap " + $(this).attr("src_swap"));
+//
+// });  // event handler function for image press
+//  // assign the attribute src of the still picture for the gif
+//  foodImage.attr("src", results[i].images.fixed_height_still.url);
+//
+//  // assign the attribute src of the gif animated image
+//  foodImage.attr("src_swap", results[i].images.fixed_height.url);

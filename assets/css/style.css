@@ -15,11 +15,13 @@
     border: 5px solid black;
     padding: 5px;
     margin: 5px;
+    float: left;
 }
 
 .movie-image {
     width: 150px;
     height: 150px;
+    float: left;
 }
 
 .movie-rating {
