@@ -33,7 +33,7 @@ $(document).ready(function() {
     function buildButtons() {
         for (var i = 0; topics.movieYear.length > i; i++) {
             var movieBtn = $("<button>");
-            movieBtn.addClass("button-style movieButton");
+            movieBtn.addClass("button-style movie-button");
             movieBtn.text(topics.movieYear[i]);
             movieBtn.attr("id", topics.buttonNumber[i]);
             $("#row-one").append(movieBtn);
@@ -72,19 +72,10 @@ $(document).ready(function() {
                     imagesForChosenTopic.imagesStill.push(movieURLStill);
                     imagesForChosenTopic.imagesAnimated.push(movieURLAnimated);
                     imagesForChosenTopic.still.push(true);
-                    // addImageClickEvent(i);
                 }
             });
     };
 
-    // function addImageClickEvent(x) {
-    //         $("#movie-"+[x]).on("click", function () {
-    //             // swapImage();
-    //             console.log("Added CLick to Image");
-    //             console.log([x]);
-    //             swapImage(x);
-    //         });
-    // }
 
 
         $("#image").on("click", ".movie-image", function () {
@@ -99,19 +90,15 @@ $(document).ready(function() {
                 }
             swapImage(x);
             console.log(x);
-
-
         });
 
 
-
-
     function swapImage(x) {
-
-        console.log("movie Row");
+        console.log("movie Row" + x);
         if (imagesForChosenTopic.still[x]) {
             console.log("image was clicked and is a still");
             var movieURL = imagesForChosenTopic.imagesAnimated[x];
+            console.log("get animated move = " + movieURL);
 
             var movieImage = $("<img>");
             movieImage.addClass("movie-border movie-image");
@@ -125,6 +112,7 @@ $(document).ready(function() {
         } else {
             console.log("clicked again - is animated");
             var movieURL = imagesForChosenTopic.imagesStill[x];
+            console.log("get still move = " + movieURL);
 
             var movieImage = $("<img>");
             movieImage.addClass("movie-border movie-image");
@@ -132,7 +120,7 @@ $(document).ready(function() {
             movieImage.attr("alt", "movie-" + [x]);
             movieImage.attr("id", "movie-" + [x]);
 
-            imagesForChosenTopic.still[x] = false;
+            imagesForChosenTopic.still[x] = true;
             $("#movie-" + [x]).replaceWith(movieImage);
         }
     }
@@ -149,56 +137,31 @@ $(document).ready(function() {
         return queryURL;
     }
 
-    function addClickEvent() {
-        for (var j = 0; topics.buttonNumber.length > j; j++) {
-            $("#" + topics.buttonNumber[j]).on("click", function () {
+
+
+            $("#row-one").on("click", ".movie-button", function () {
                 console.log(this.id);
-
                 movieToBeSearched = (this.id);
-
                 // build the query string to pull the movies
                 queryString = buildSearchURL(movieToBeSearched);
+                $("#image").empty();
+
+                for (var i = 0; imagesForChosenTopic.imagesAnimated.length > i; i++)
+                {
+                    imagesForChosenTopic.still[i] = true;
+                }
+
+                imagesForChosenTopic.imagesStill.length = 0;
+                imagesForChosenTopic.imagesAnimated.length = 0;
                 getImages(queryString);
-            });
-        }
-    }
-
-
-
+            })
 
 
 
 
     // execution of the code
-
     buildButtons();
-    addClickEvent();
-
-
-
 
 } )
 
 
-// /***************************************************************************
-//  // Event handler for user clicking a food image
-//  //***************************************************************************
-//  $(document.body).on("click", "img", function() {
-//
-//    if (DebugON) console.log ("In image press event handler");
-//
-//    // Swap the source url with the alternate src url
-//    var temp_src = $(this).attr("src");
-//    $(this).attr("src", $(this).attr("src_swap"));
-//    $(this).attr("src_swap", temp_src);
-//
-//    if (DebugON) console.log ("In image press temp: " + temp_src);
-//    if (DebugON) console.log ("In image press src: " + $(this).attr("src"));
-//    if (DebugON) console.log ("In image press: swap " + $(this).attr("src_swap"));
-//
-// });  // event handler function for image press
-//  // assign the attribute src of the still picture for the gif
-//  foodImage.attr("src", results[i].images.fixed_height_still.url);
-//
-//  // assign the attribute src of the gif animated image
-//  foodImage.attr("src_swap", results[i].images.fixed_height.url);
