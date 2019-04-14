@@ -138,7 +138,6 @@ $(document).ready(function() {
     }
 
 
-
             $("#row-one").on("click", ".movie-button", function () {
                 console.log(this.id);
                 movieToBeSearched = (this.id);
@@ -156,10 +155,29 @@ $(document).ready(function() {
                 getImages(queryString);
             })
 
+    $("#add-decade").on("click", function(event) {
+        event.preventDefault();
+
+        addNewDecade();
+    })
 
 
+    function addNewDecade() {
+        var decade = $("#movie-decade").val().trim();
+        topics.movieYear.push(decade + " Movies");
+        topics.movieQuery.push(decade+"+Movies");
+        topics.buttonNumber.push("year"+decade);
 
-    // execution of the code
+        // Calling renderButtons which handles the processing of our movie array
+        $("#row-one").empty();
+        $("#image").empty();
+
+        $("#movie-decade").val("");
+        buildButtons();
+        // execution of the code
+    }
+
+
     buildButtons();
 
 } )

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05e2c37a-a67c-440b-91da-01be2be2783b" name="Default Changelist" comment="" />
+    <list default="true" id="05e2c37a-a67c-440b-91da-01be2be2783b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/javascript/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/javascript/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="27" column="32" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="32" />
+            <state relative-caret-position="377">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
@@ -25,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/javascript/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="150" column="57" lean-forward="true" selection-start-line="150" selection-start-column="57" selection-end-line="150" selection-end-column="57" />
+            <state relative-caret-position="166">
+              <caret line="168" column="48" lean-forward="true" selection-start-line="168" selection-start-column="48" selection-end-line="168" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -34,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="135">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -73,8 +77,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/assets/css/reset.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/assets/javascript/app.js" />
       </list>
     </option>
@@ -150,15 +154,16 @@
       <workItem from="1555109194686" duration="19064000" />
       <workItem from="1555161224915" duration="7814000" />
       <workItem from="1555185648685" duration="15134000" />
-      <workItem from="1555203513100" duration="1472000" />
+      <workItem from="1555203513100" duration="2670000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43484000" />
+    <option name="totallyTimeSpent" value="44682000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26037195" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -204,22 +209,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="27" column="32" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="32" />
+        <state relative-caret-position="377">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/javascript/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="150" column="57" lean-forward="true" selection-start-line="150" selection-start-column="57" selection-end-line="150" selection-end-column="57" />
+        <state relative-caret-position="166">
+          <caret line="168" column="48" lean-forward="true" selection-start-line="168" selection-start-column="48" selection-end-line="168" selection-end-column="48" />
         </state>
       </provider>
     </entry>
